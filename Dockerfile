@@ -11,5 +11,7 @@ RUN npm install -g truffle
 # Expose the default Truffle development port
 EXPOSE 9545
 
+ENTRYPOINT ["docker-entrypoint.sh"]
+
 # Start the Truffle development console by default
 CMD ["bash"]

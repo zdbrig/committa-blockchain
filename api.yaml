@@ -1,0 +1,94 @@
+openapi: "3.0.0"
+info:
+  version: "1.0.0"
+  title: "API Commita"
+  description: "API pour la gestion de la communauté Commita"
+  termsOfService: "http://example.com/terms/"
+  contact:
+    name: "API Support"
+    url: "http://www.example.com/support"
+    email: "support@example.com"
+servers:
+  - url: "https://api.commita.com/v1"
+paths:
+  /users:
+    get:
+      summary: "Récupère la liste des utilisateurs"
+      responses:
+        '200':
+          description: "Une liste d'utilisateurs"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/User"
+    post:
+      summary: "Crée un nouvel utilisateur"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        '201':
+          description: "Utilisateur créé"
+  /users/{userId}:
+    get:
+      summary: "Récupère un utilisateur spécifique"
+      parameters:
+        - name: "userId"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        '200':
+          description: "Un utilisateur"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+    put:
+      summary: "Met à jour un utilisateur spécifique"
+      parameters:
+        - name: "userId"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        '200':
+          description: "Utilisateur mis à jour"
+    delete:
+      summary: "Supprime un utilisateur spécifique"
+      parameters:
+        - name: "userId"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        '204':
+          description: "Utilisateur supprimé"
+components:
+  schemas:
+    User:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          readOnly: true
+        name:
+          type: "string"
+        email:
+          type: "string"
+        password:
+          type: "string"

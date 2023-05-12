@@ -1,0 +1,21 @@
+# Truffle artifacts
+/build/
+/contracts/*.json
+
+# Truffle build artifacts
+/abis/
+/contracts/Migrations.sol
+/contracts/Migrations.json
+
+# Truffle test artifacts
+/test/artifacts/
+/test/report/
+
+# Truffle development console history
+/.history
+
+# NPM dependencies
+/node_modules/
+
+# Truffle development environment
+/.truffle-dev/

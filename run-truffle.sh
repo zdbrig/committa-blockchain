@@ -1,0 +1,1 @@
+docker run -it -v `pwd`:/app -w /app --network bacem-net --ip 172.168.100.2 bbacem/truffle truffle develop
